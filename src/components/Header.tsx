@@ -6,7 +6,7 @@ export default function Header() {
             <div className="md:hidden">
                  <img src="/drawer.png" className="w-[34px] h-[34px]"/>
             </div>
-      <div className="md:w-[368px] w-[fit-content]"  >
+      <div className="md:w-[368px] w-[fit-content]  md:mx-0 mx-auto"  >
         <img src="/Link.png" className="h-[32px]" alt="" />
       </div>
 
