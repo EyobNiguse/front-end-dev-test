@@ -1,7 +1,7 @@
 export default function Header() {
    
     return (
- 
+ <div className="block h-[15vh]">
         <header className="w-full flex justify-between items-baseline h-[45px] pt-[10px] pr-[16px] pb-[10px] pl-[16px]">
             <div className="md:hidden">
                  <img src="/drawer.png" className="w-[34px] h-[34px]"/>
@@ -37,5 +37,6 @@ export default function Header() {
         </div>
       </div>
     </header>
+    </div>
   );
 }
