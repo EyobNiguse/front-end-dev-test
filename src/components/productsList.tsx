@@ -76,14 +76,14 @@ export default function ProductsList() {
     };
   }, []);
   return (
-    <div className="md:w-3/4 md:mx-auto mt-10 ">
+    <div className="md:w-[100%] md:mx-auto mt-10 ">
       <h1 className="font-bold p-10 md:pl-0 text-[32px]">Hottest</h1>
       <div
         className=" realtive flex space-x-4  h-[50vh] max-w-[600px]  md:overflow-x-visible overflow-x-scroll hide-scroll-bar"
         ref={carouselRef}
       >
         {mockProductData.map((item, index) => (
-          <div key={index} className="min-w-[300px] p-3 md:p-0 ">
+          <div key={index} className="min-w-[290px] p-3 md:p-0 ">
             <Product
               name={item.name}
               price={item.price}

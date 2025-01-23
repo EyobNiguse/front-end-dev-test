@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <div className="block h-[15vh]">
+    <div className="block h-[15vh] px-6">
       <header className="w-full flex justify-between items-baseline h-[45px] pt-[10px] pr-[16px] pb-[10px] pl-[16px]">
         <div className="md:hidden cursor-pointer" onClick={toggleMenu}>
           <MdOutlineMenu size="34px" />
