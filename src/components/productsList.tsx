@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import { useEffect, useRef, useState } from "react";
 import Product, { ProductProps } from "./product";
- 
+
+import QuickLinks from "./QuickLinks";
 
 export default function ProductsList() {
   const mockProductData: ProductProps[] = [
@@ -45,40 +46,42 @@ export default function ProductsList() {
   const [scrollIndex, setScrollIndex] = useState(0);
 
   const handleScroll = () => {
-    console.log("called",carouselRef);
     if (carouselRef.current) {
-        const scrollLeft = carouselRef.current.scrollLeft;
-        const itemWidth = 300; // Width of each item
-        const index = Math.ceil(scrollLeft / itemWidth);
-        console.log(scrollLeft,index,"scroll left")
-        setScrollIndex(Math.min(Math.max(index, 0), mockProductData.length - 1));
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const itemWidth = 300; // Width of each item
+      const index = Math.ceil(scrollLeft / itemWidth);
+
+      setScrollIndex(Math.min(Math.max(index, 0), mockProductData.length - 1));
     }
   };
   const handleIndicatorClick = (index: number) => {
     if (carouselRef.current) {
-        const itemWidth = 300; // Width of each item
-        carouselRef.current.scrollTo({
-            left: itemWidth * index,
-            behavior: 'smooth' // Smooth scrolling
-        });
-        setScrollIndex(index); // Update the current index
+      const itemWidth = 300; // Width of each item
+      carouselRef.current.scrollTo({
+        left: itemWidth * index,
+        behavior: "smooth", // Smooth scrolling
+      });
+      setScrollIndex(index); // Update the current index
     }
-};
+  };
   useEffect(() => {
     const carousel = carouselRef.current;
     if (carousel) {
-        carousel.addEventListener('scroll', handleScroll);
+      carousel.addEventListener("scroll", handleScroll);
     }
     return () => {
-        if (carousel) {
-            carousel.removeEventListener('scroll', handleScroll);
-        }
+      if (carousel) {
+        carousel.removeEventListener("scroll", handleScroll);
+      }
     };
-}, []);
+  }, []);
   return (
     <div className="md:w-3/4 md:mx-auto mt-10 ">
       <h1 className="font-bold p-10 md:pl-0 text-[32px]">Hottest</h1>
-      <div className=" realtive flex space-x-4  h-[50vh] max-w-[600px]  md:overflow-x-visible overflow-x-scroll hide-scroll-bar" ref={carouselRef}>
+      <div
+        className=" realtive flex space-x-4  h-[50vh] max-w-[600px]  md:overflow-x-visible overflow-x-scroll hide-scroll-bar"
+        ref={carouselRef}
+      >
         {mockProductData.map((item, index) => (
           <div key={index} className="min-w-[300px] p-3 md:p-0 ">
             <Product
@@ -95,16 +98,20 @@ export default function ProductsList() {
         ))}
       </div>
       <div className="md:hidden flex justify-center space-x-1 mt-2 h-[10vh] p-6">
-                    {mockProductData.map((_, index) => {
-                        console.log(index,scrollIndex == index ,"index here");
-                        return <div
-                        onClick={()=>handleIndicatorClick(index)}
-                            key={index}
-                            className={`h-1 w-10    rounded-sm   ${scrollIndex == index ? 'bg-gray-300' : 'bg-gray-400'}`}
-                        
-                        />
-})}
-                </div>
+        {mockProductData.map((_, index) => {
+          return (
+            <div
+              onClick={() => handleIndicatorClick(index)}
+              key={index}
+              className={`h-1 w-10    rounded-sm   ${
+                scrollIndex == index ? "bg-gray-300" : "bg-gray-400"
+              }`}
+            />
+          );
+        })}
+      </div>
+
+      <QuickLinks />
     </div>
   );
 }

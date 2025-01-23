@@ -3,7 +3,7 @@ import UsersList from "./TotalUsersCard";
 import TradeVolumeCard from "./tradeVolumeCard";
 
 export default function Hero(){
-    return <div className="w-full grid md:grid-cols-[2fr,1fr] grid-cols-1 md:mt-20 md:px-40 p-4 space-y-10">
+    return <div className="w-full grid md:grid-cols-[2fr,1fr] grid-cols-1 md:mt-10 md:px-40 p-4 space-y-10">
 <div className="bg-white w-full">
 
     <h1 className="md:text-[60px] text-[40px] font-[700] md:text-left text-center">Buy Memes.</h1>
